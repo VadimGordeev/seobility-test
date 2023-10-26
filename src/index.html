@@ -9,6 +9,63 @@
     <title>Document</title>
   </head>
   <body>
-    <script src="./script/index.js"></script>
+    <form id="form">
+      <div class="input_field">
+        <label for="name">Имя:</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+        />
+        <div
+          class="error"
+          id="nameError"
+        ></div>
+      </div>
+
+      <div class="input_field">
+        <label for="email">E-mail:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+        />
+        <div
+          class="error"
+          id="emailError"
+        ></div>
+      </div>
+
+      <div class="input_field">
+        <label for="phone">Телефон:</label>
+        <input
+          type="text"
+          id="phone"
+          name="phone"
+        />
+        <div
+          class="error"
+          id="phoneError"
+        ></div>
+      </div>
+
+      <div class="input_field">
+        <label for="message">Сообщение:</label>
+        <textarea
+          id="message"
+          name="message"
+        ></textarea>
+        <div
+          class="error"
+          id="messageError"
+        ></div>
+      </div>
+
+      <button type="submit">Отправить</button>
+    </form>
+    <script
+      src="./script/index.js"
+      type="module"
+    ></script>
   </body>
 </html>
