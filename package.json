@@ -13,9 +13,13 @@
     "start": "webpack serve --mode development"
   },
   "dependencies": {
+    "css-loader": "6.8.1",
     "execa": "8.0.1",
     "fs-extra": "11.1.1",
-    "prettier-package-json": "2.8.0"
+    "postcss-loader": "7.3.3",
+    "postcss-preset-env": "9.2.0",
+    "prettier-package-json": "2.8.0",
+    "style-loader": "3.3.3"
   },
   "devDependencies": {
     "@babel/core": "7.23.2",
