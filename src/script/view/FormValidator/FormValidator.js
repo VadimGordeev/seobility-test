@@ -1,3 +1,5 @@
+import Inputmask from 'inputmask';
+
 export class FormValidator {
   constructor(form) {
     this.form = form;
@@ -5,6 +7,8 @@ export class FormValidator {
     this.errors = {};
 
     this.form.addEventListener('submit', (event) => this.validateForm(event));
+
+    this.initPhoneMask();
   }
 
   validateForm(event) {
@@ -57,5 +61,17 @@ export class FormValidator {
   isValidEmail(email) {
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     return emailRegex.test(email);
+  }
+
+  initPhoneMask() {
+    const phoneInput = this.form.querySelector('[name="phone"]');
+    if (phoneInput) {
+      const phoneMask = new Inputmask({
+        mask: '+375 (99) 999-99-99',
+        placeholder: '_',
+        clearIncomplete: true
+      });
+      phoneMask.mask(phoneInput);
+    }
   }
 }
