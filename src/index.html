@@ -11,61 +11,57 @@
   <body>
     <form id="form">
       <div class="input_field">
-        <label for="name">Имя:</label>
+        <label for="name">Имя: *</label>
         <input
           type="text"
           id="name"
           name="name"
         />
-        <div
-          class="error"
+        <span
+          class="error_message"
           id="nameError"
-        ></div>
+        ></span>
       </div>
 
       <div class="input_field">
-        <label for="email">E-mail:</label>
+        <label for="email">E-mail: *</label>
         <input
-          type="email"
+          type="text"
           id="email"
           name="email"
         />
-        <div
-          class="error"
+        <span
+          class="error_message"
           id="emailError"
-        ></div>
+        ></span>
       </div>
 
       <div class="input_field">
-        <label for="phone">Телефон:</label>
+        <label for="phone">Телефон: *</label>
         <input
           type="text"
           id="phone"
           name="phone"
         />
-        <div
-          class="error"
+        <span
+          class="error_message"
           id="phoneError"
-        ></div>
+        ></span>
       </div>
 
       <div class="input_field">
-        <label for="message">Сообщение:</label>
+        <label for="message">Сообщение: *</label>
         <textarea
           id="message"
           name="message"
         ></textarea>
-        <div
-          class="error"
+        <span
+          class="error_message"
           id="messageError"
-        ></div>
+        ></span>
       </div>
 
       <button type="submit">Отправить</button>
     </form>
-    <script
-      src="./script/index.js"
-      type="module"
-    ></script>
   </body>
 </html>
