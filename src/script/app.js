@@ -1,7 +1,7 @@
-import { FormValidator } from './view/FormValidator/FormValidator';
+import { Form } from './view/Form/Form';
 
 export class App {
   constructor() {
-    this.formValidator = new FormValidator(document.getElementById('form'));
+    this.formValidator = new Form(document.getElementById('form'));
   }
 }
