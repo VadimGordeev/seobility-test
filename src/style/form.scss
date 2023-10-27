@@ -16,6 +16,7 @@ form {
 
     textarea {
       height: 150px;
+      resize: none;
     }
     .error_message {
       color: $error-color;
