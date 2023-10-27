@@ -4,24 +4,27 @@ form {
   .input_field {
     margin-top: 10px;
 
-    > input[type='text'],
+    input[type='text'],
     input[type='email'],
     textarea {
       width: 100%;
       padding: 10px;
       margin-top: 5px;
-      border: 1px solid #ccc;
+      border: 1px solid $border-color;
       border-radius: 5px;
     }
 
-    > textarea {
+    textarea {
       height: 150px;
+    }
+    .error_message {
+      color: $error-color;
     }
   }
 }
 
 button[type='submit'] {
-  background-color: #007bff;
+  background-color: $primary-color;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -29,6 +32,6 @@ button[type='submit'] {
   cursor: pointer;
 
   &:hover {
-    background-color: #0056b3;
+    background-color: $primaty-hover-color;
   }
 }
