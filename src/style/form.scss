@@ -1,6 +1,15 @@
 form {
   max-width: 400px;
   margin: 0 auto;
+  .error_response_message {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: $error-color;
+  }
+  .success_response_message {
+    color: $success-color;
+  }
   .input_field {
     margin-top: 10px;
 
