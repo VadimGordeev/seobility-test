@@ -1,6 +1,6 @@
 import Inputmask from 'inputmask';
 
-export class FormValidator {
+export class Form {
   constructor(form) {
     this.form = form;
     this.fields = form.querySelectorAll('input, textarea');
@@ -29,7 +29,7 @@ export class FormValidator {
     });
 
     if (Object.keys(this.errors).length === 0) {
-      this.form.submit();
+      this.submitForm();
     }
   }
 
@@ -73,5 +73,47 @@ export class FormValidator {
       });
       phoneMask.mask(phoneInput);
     }
+  }
+
+  submitForm() {
+    const formData = {};
+
+    this.fields.forEach((field) => {
+      const fieldName = field.getAttribute('name');
+      const value = field.value;
+
+      if (fieldName) {
+        formData[fieldName] = value;
+      }
+    });
+
+    fetch('url', {
+      method: 'POST',
+      body: JSON.stringify(formData),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.status === 'error') {
+          for (const fieldName in data.fields) {
+            const errorMessage = data.fields[fieldName];
+            this.setError(fieldName, errorMessage);
+          }
+        } else if (data.status === 'success') {
+          this.clearFields();
+          alert(data.msg);
+        }
+      })
+      .catch((error) => {
+        console.error('Ошибка при отправке формы:', error);
+      });
+  }
+
+  clearFields() {
+    this.fields.forEach((field) => {
+      field.value = '';
+    });
   }
 }
