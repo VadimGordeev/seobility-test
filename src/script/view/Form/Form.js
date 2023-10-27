@@ -6,6 +6,9 @@ export class Form {
     this.fields = form.querySelectorAll('input, textarea');
     this.errors = {};
 
+    this.errorContainer = document.getElementById('errorResponseMessage');
+    this.successMessage = document.getElementById('successResponseMessage');
+
     this.form.addEventListener('submit', (event) => this.validateForm(event));
 
     this.initPhoneMask();
@@ -14,6 +17,7 @@ export class Form {
   validateForm(event) {
     event.preventDefault();
     this.clearErrors();
+    this.successMessage.textContent = '';
 
     this.fields.forEach((field) => {
       const fieldName = field.getAttribute('name');
@@ -47,15 +51,19 @@ export class Form {
   }
 
   clearErrors() {
-    for (const field of this.fields) {
+    this.fields.forEach((field) => {
       const fieldName = field.getAttribute('name');
       const errorField = this.form.querySelector(`#${fieldName}Error`);
 
       field.style.borderColor = '';
       errorField.textContent = '';
-    }
+    });
 
     this.errors = {};
+
+    while (this.errorContainer.firstChild) {
+      this.errorContainer.removeChild(this.errorContainer.firstChild);
+    }
   }
 
   isValidEmail(email) {
@@ -87,7 +95,7 @@ export class Form {
       }
     });
 
-    fetch('url', {
+    fetch('http://localhost:3000/form', {
       method: 'POST',
       body: JSON.stringify(formData),
       headers: {
@@ -97,17 +105,19 @@ export class Form {
       .then((response) => response.json())
       .then((data) => {
         if (data.status === 'error') {
-          for (const fieldName in data.fields) {
-            const errorMessage = data.fields[fieldName];
-            this.setError(fieldName, errorMessage);
-          }
+          Object.entries(data.fields).forEach(([fieldName, error]) => {
+            const errorField = document.createElement('span');
+            errorField.textContent = error;
+            this.errorContainer.appendChild(errorField);
+            this.errors[fieldName] = true;
+          });
         } else if (data.status === 'success') {
           this.clearFields();
-          alert(data.msg);
+          this.successMessage.textContent = data.message;
         }
       })
       .catch((error) => {
-        console.error('Ошибка при отправке формы:', error);
+        throw new Error('Ошибка при отправке формы:', error);
       });
   }
 
