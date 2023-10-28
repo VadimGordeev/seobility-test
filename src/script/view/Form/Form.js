@@ -1,9 +1,9 @@
 import Inputmask from 'inputmask';
 
 export class Form {
-  constructor(form) {
-    this.form = form;
-    this.fields = form.querySelectorAll('input, textarea');
+  constructor() {
+    this.form = document.getElementById('form');
+    this.fields = this.form.querySelectorAll('input, textarea');
     this.errors = {};
 
     this.errorContainer = document.getElementById('errorResponseMessage');
