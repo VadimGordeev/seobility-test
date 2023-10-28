@@ -1,0 +1,75 @@
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.open_button {
+  background-color: $primary-color;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  &:hover {
+    background-color: $primaty-hover-color;
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $modal-background;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+
+  &.active {
+    opacity: 1;
+    pointer-events: auto;
+    display: flex;
+  }
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: $modal-shadow;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  animation-name: modal-animation;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  color: $close-icon-color;
+  cursor: pointer;
+  &:hover {
+    color: $close-icon-hover-color;
+  }
+}
+
+@keyframes modal-animation {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
