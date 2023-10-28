@@ -40,7 +40,7 @@ button[type='submit'] {
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
-
+  transition: background-color 0.3s ease;
   &:hover {
     background-color: $primaty-hover-color;
   }
