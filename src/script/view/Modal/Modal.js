@@ -1,8 +1,8 @@
 export class Modal {
-  constructor(openButtonId, closeButtonId, modalId) {
-    this.openModalButton = document.getElementById(openButtonId);
-    this.closeModalButton = document.getElementById(closeButtonId);
-    this.modal = document.getElementById(modalId);
+  constructor() {
+    this.openModalButton = document.getElementById('open-modal');
+    this.closeModalButton = document.getElementById('close-modal');
+    this.modal = document.getElementById('modal');
     this.modalActions();
   }
 

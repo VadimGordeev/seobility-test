@@ -3,7 +3,7 @@ import { Modal } from './view/Modal/Modal';
 
 export class App {
   constructor() {
-    this.form = new Form(document.getElementById('form'));
-    this.modal = new Modal('open-modal', 'close-modal', 'modal');
+    this.form = new Form();
+    this.modal = new Modal();
   }
 }
